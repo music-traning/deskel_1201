@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Deskel Pro (v3)</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="icon" href="icon.png">
+  <meta name="theme-color" content="#000000">
+  <link rel="stylesheet" href="style.css">
+  </head>
+
+<body>
+
+  <button id="btn-toggle-ui" onclick="toggleImmersiveMode()">👁️</button>
+
+  <div id="top-bar">
+    <button id="btn-help" onclick="openHelp()">?</button>
+    <div class="top-right-group">
+      <button id="btn-lang" class="status-btn" onclick="toggleRegion()">🇯🇵 Japan</button>
+      <button id="btn-login" class="status-btn" onclick="signIn()">G Login</button>
+      <img id="user-icon" src="" alt="user">
+    </div>
+  </div>
+
+  <div class="video-container" id="touch-area">
+    <div id="transform-wrapper">
+      <video id="camera-video" autoplay playsinline muted></video>
+      <img id="imported-image" style="display:none;" draggable="false">
+    </div>
+  </div>
+
+  <div id="overlay-layer">
+    <div id="guide-frame" class="grid-4x4"></div>
+  </div>
+
+  <div class="ui-container" id="main-ui">
+    <div class="zoom-control">
+      <span>－</span>
+      <input type="range" id="zoom-slider" min="1.0" max="3.0" step="0.01" value="1.0">
+      <span>＋</span>
+    </div>
+
+    <div class="main-actions">
+      <button id="btn-grid-type" class="tool-btn" onclick="toggleGridType()">▦</button>
+      <button id="btn-grid-color" class="tool-btn" onclick="toggleGridColor()">🎨</button>
+      <button id="btn-rotate" class="tool-btn" onclick="toggleOrientation()">🔄</button>
+
+      <button id="btn-camera" class="size-btn-static" style="background: rgba(60,60,60,0.9);">📷 Camera</button>
+      <button id="btn-import" class="size-btn-static" style="background: rgba(60,60,60,0.9);">📁 Import</button>
+      <input type="file" id="file-input" accept="image/*" style="display: none;">
+    </div>
+
+    <button id="btn-open-size-panel" onclick="openSizePanel()">
+      <span id="current-size-label">サイズを選択</span>
+    </button>
+
+    <button id="shutter-btn"></button>
+
+    <div class="footer-links">
+      <button id="btn-tokusho" class="footer-link" onclick="openTokusho()">特定商取引法に基づく表記</button>
+    </div>
+  </div>
+
+  <div id="size-panel">
+    <div class="panel-header">
+      <span id="text-size-header">キャンバスサイズ</span>
+      <button class="panel-close-btn" onclick="closeSizePanel()">×</button>
+    </div>
+    <div class="size-grid" id="panel-grid-container"></div>
+  </div>
+
+  <div id="modal">
+    <div class="modal-box">
+      <h3 id="text-premium-title">💎 有料機能</h3>
+      <p id="text-premium-desc" style="text-align:center;">Proプランへの登録が必要です。</p>
+      <p id="text-premium-warning" style="font-size: 11px; color: #aaa; margin-bottom: 15px;"></p>
+      <button id="btn-purchase" class="btn-purchase-demo" onclick="startPaymentLink()">¥300で購入する</button>
+      <button id="btn-close-modal" class="btn-cancel" onclick="closeModal()">キャンセル</button>
+    </div>
+  </div>
+
+  <div id="save-modal">
+    <div class="modal-box">
+      <h3 id="text-save-title">撮影しました</h3>
+      <img id="preview-img" src="">
+      <p id="text-save-desc" style="text-align:center; font-size:12px; color:#aaa; margin-bottom:15px;">
+        保存方法を選んでください</p>
+      <div style="display:flex; justify-content:center; flex-wrap:wrap;">
+        <button id="btn-main-save" class="btn-download" style="background:#00d2ff; color:black; width:100%; padding:15px;">
+          💾 画像を保存・共有
+        </button>
+      </div>
+      <button id="btn-close-save" class="btn-cancel" onclick="closeSaveModal()">閉じる</button>
+    </div>
+  </div>
+
+  <div id="help-modal">
+    <div class="modal-box">
+      <h3 id="text-help-title">使い方</h3>
+      <div id="help-content-area" class="help-content"></div>
+      <button id="btn-close-help" class="btn-cancel" onclick="closeHelp()">閉じる</button>
+    </div>
+  </div>
+
+  <div id="tokusho-modal">
+    <div class="modal-box">
+      <h3 id="text-tokusho-title">特定商取引法に基づく表記</h3>
+      <div class="help-content">
+        <table class="tokusho-table" id="tokusho-table"></table>
+      </div>
+      <button id="btn-close-tokusho" class="btn-cancel" onclick="closeTokusho()">閉じる</button>
+    </div>
+  </div>
+
+  <div id="onboarding-overlay" style="display:none;">
+    <div class="onboarding-content">
+      <div class="ob-step step-center">
+        <div class="ob-icon">👆</div>
+        <p>2本指で<br>拡大・縮小</p>
+      </div>
+      <div class="ob-step step-bottom">
+        <div class="ob-arrow">⬇</div>
+        <p>ツールバーで<br>グリッド・色を変更</p>
+      </div>
+      <button class="ob-btn-start" onclick="closeOnboarding()">はじめる</button>
+    </div>
+  </div>
+
+  <canvas id="photo-canvas"></canvas>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
