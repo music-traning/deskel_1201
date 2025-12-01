@@ -94,26 +94,7 @@ const LANGUAGE_STRINGS = {
         <strong>💡 ヒント:</strong><br>
         「📷 カメラ」は風景や静物のデッサンに。<br>
         「📁 読込」は写真模写の練習に便利です。
-      </div>
-
-      <div style="background:rgba(255,0,0,0.15); border:1px solid #ff5555; padding:10px; border-radius:8px; margin-top:15px;">
-        <strong style="color:#ff8888;">⚠️ 購入前のご注意</strong><br>
-        デジタルコンテンツの特性上、<strong>購入後の返金はできません</strong>。<br>
-        必ずこのデモ版で、お使いの機種での動作や使い心地を十分にお確かめの上、ご納得いただいてからご購入ください。
       </div>`,
-    'LEGAL_DATA': {
-      '販売業者': 'U.M.A web',
-      '運営統括責任者': '[代表者氏名を入力]',
-      '所在地': '[住所を入力してください]',
-      '電話番号': '[電話番号を入力]',
-      'メールアドレス': 'your-email@example.com',
-      '販売価格': '300円（税込）',
-      '商品代金以外の必要料金': 'インターネット接続料金、通信料金等はお客様の負担となります。',
-      'お支払方法': 'クレジットカード決済 (Stripe)',
-      '代金の支払時期': 'ご利用のクレジットカード会社の締め日や契約内容により異なります。',
-      '引渡時期': '決済完了後、即時に有料機能が利用可能になります。',
-      '返品・交換について': 'デジタルコンテンツの特性上、購入確定後の返品・交換・キャンセルには応じられません。予めご了承ください。'
-    }
   },
   'us': {
     'LOGIN_REQUIRED': 'Please sign in first\nto link your purchase.',
@@ -175,12 +156,6 @@ const LANGUAGE_STRINGS = {
         <strong>💡 Tip:</strong><br>
         Use "📷 Camera" for life drawing.<br>
         Use "📁 Import" for photo reference study.
-      </div>
-      
-      <div style="background:rgba(255,0,0,0.15); border:1px solid #ff5555; padding:10px; border-radius:8px; margin-top:15px;">
-        <strong style="color:#ff8888;">⚠️ Important: Before You Buy</strong><br>
-        Due to the nature of digital content, <strong>all sales are final and non-refundable</strong>.<br>
-        Please fully test this demo version to ensure it works with your device before purchasing.
       </div>`,
     'LEGAL_DATA': {
       'Distributor': 'U.M.A web',
