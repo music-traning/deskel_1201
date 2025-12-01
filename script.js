@@ -8,12 +8,12 @@ import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasej
 // 1. Firebaseの接続情報
 // 全機能開放デモモードのため、接続情報を無効化
 // const firebaseConfig = {
-//   apiKey: "AIzaSyA_A5BqSP48YSiZU90jFn94g1ccyCnKS1g",
+//   apiKey: "AIzaSyA_A5BqSP48YSiZU90jFn94g1ccyCnKxxx",
 //   authDomain: "deskel-app.firebaseapp.com",
 //   projectId: "deskel-app",
 //   storageBucket: "deskel-app.firebasestorage.app",
 //   messagingSenderId: "1022422619356",
-//   appId: "1:1022422619356:web:c1a2008fafcf4499021019"
+//   appId: "1:1022422619356:web:c1a2008fafcf4499021xxx"
 // };
 
 // 2. Stripeの支払いリンク
