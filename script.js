@@ -36,8 +36,7 @@ const LANGUAGE_STRINGS = {
     'IMPORT': '📁 読込',
     'CAMERA': '📷 カメラ',
     'BTN_GRID_TYPE': '▦ 構図',
-    'TOKUSHO_BTN': '特定商取引法に基づく表記',
-    'TOKUSHO_TITLE': '特定商取引法に基づく表記',
+
     'BTN_CLOSE_SIMPLE': '閉じる',
     'SIZE_HEADER': 'キャンバスサイズ',
     'SIZE_STANDARD': 'A4/B4 (ISO)',
@@ -55,7 +54,7 @@ const LANGUAGE_STRINGS = {
     'PREMIUM_DESC': `
       <div style="text-align:left; margin:0 auto; display:inline-block;">
       <b>プロフェッショナルのための機能</b><br>
-      ✅ 全キャンバスサイズの解放<br>
+      
       </div><br><br>
       たった300円(税込)で、<br>あなたのデッサン環境を完成させましょう。
     `,
@@ -659,7 +658,7 @@ function updateUITexts() {
   document.getElementById('btn-lang').innerText = dict['BTN_LABEL'];
   document.getElementById('btn-import').innerText = dict['IMPORT'];
   document.getElementById('btn-camera').innerText = dict['CAMERA'];
-  document.getElementById('btn-tokusho').innerText = dict['TOKUSHO_BTN'];
+
 
   const elCloseHelp = document.getElementById('btn-close-help');
   if (elCloseHelp) elCloseHelp.innerText = dict['BTN_CLOSE_SIMPLE'];
