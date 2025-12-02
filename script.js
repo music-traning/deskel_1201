@@ -1,11 +1,8 @@
 import { inject } from 'https://esm.sh/@vercel/analytics';
 
-// アナリティクスを開始（本番環境でのみデータが送信されます）
 inject();
 
 // 言語データ
-// 言語データ（OFUSE支援リンク追加版）
-// 言語データ（OFUSE支援リンク追加版 + カメラ歪み注意書き追加）
 const LANGUAGE_STRINGS = {
   'ja': {
     'BTN_LABEL': '🇯🇵 Japan',
@@ -27,15 +24,6 @@ const LANGUAGE_STRINGS = {
     'SIZE_US_1824': 'US Poster (3:4)',
     'SIZE_EU_ISO': 'ISO A-Series',
     'SIZE_EU_FIG': 'Europe Figure',
-    'PREMIUM_TITLE': '💎 Proプランにアップグレード',
-    'PREMIUM_DESC': `
-      <div style="text-align:left; margin:0 auto; display:inline-block;">
-      <b>プロフェッショナルのための機能</b><br>
-      </div><br><br>
-      たった300円(税込)で、<br>あなたのデッサン環境を完成させましょう。
-    `,
-    'PREMIUM_WARNING': '※買い切りタイプです。月額課金ではありません。',
-    'PURCHASE': '¥300ですべて解放する',
     'CLOSE': 'キャンセル',
     'SAVE_TITLE': '撮影しました',
     'SAVE_DESC': '保存後、共有メニューから「画像を保存」や「フォト」を選択してください。',
@@ -107,10 +95,6 @@ const LANGUAGE_STRINGS = {
     'SIZE_US_1824': '18x24 in (3:4)',
     'SIZE_EU_ISO': 'ISO A-Series',
     'SIZE_EU_FIG': 'Europe Figure',
-    'PREMIUM_TITLE': '💎 Upgrade to Pro',
-    'PREMIUM_DESC': 'Unlock all canvas sizes<br>and High-Res export.',
-    'PREMIUM_WARNING': 'One-time purchase.',
-    'PURCHASE': 'Unlock All for $3.00',
     'CLOSE': 'Cancel',
     'SAVE_TITLE': 'Captured',
     'SAVE_DESC': 'Select "Save Image" or "Photos" from the share menu.',
@@ -182,10 +166,6 @@ const LANGUAGE_STRINGS = {
     'SIZE_US_1824': 'US 18x24 (3:4)',
     'SIZE_EU_ISO': 'ISO A-Series',
     'SIZE_EU_FIG': 'Europe Figure',
-    'PREMIUM_TITLE': '💎 Upgrade to Pro',
-    'PREMIUM_DESC': 'Unlock all canvas sizes<br>and High-Res export.',
-    'PREMIUM_WARNING': 'One-time purchase.',
-    'PURCHASE': 'Unlock All for $3.00',
     'CLOSE': 'Cancel',
     'SAVE_TITLE': 'Captured',
     'SAVE_DESC': 'Select "Save Image" or "Photos" from the share menu.',
@@ -239,9 +219,6 @@ const LANGUAGE_STRINGS = {
 };
 
 let currentRegion = 'ja';
-let isUserPremium = true; // ★ 常に true に設定し、全てのサイズを解放
-let currentUser = null; // ★ 常に null に設定し、ログインを不要に
-let unsubscribeUser = null;
 
 // === 状態管理 ===
 const state = {
@@ -258,14 +235,6 @@ const state = {
 };
 
 const GRID_TYPES = ['grid-4x4', 'grid-3x3', 'grid-cross'];
-
-// ★変更: ログイン処理を無効化
-window.signIn = () => {
-  console.log("デモモード: ログイン処理は無効です。");
-  alert("デモモード: ログイン機能は無効です。Pro機能は解放されています。");
-};
-
-// ログイン監視 & 有料会員チェック (Firestore連携・リアルタイム版) は無効化
 
 const RATIO_DATA = [
   { id: 'standard', label_key: 'SIZE_STANDARD', ratio: 297 / 210, regions: ['ja'], isPro: false },
@@ -576,12 +545,6 @@ window.openHelp = () => {
 window.closeHelp = () => document.getElementById('help-modal').style.display = 'none';
 window.closeModal = () => document.getElementById('modal').style.display = 'none';
 window.closeSaveModal = () => document.getElementById('save-modal').style.display = 'none';
-
-// === 決済機能の連携 ===
-window.startPaymentLink = () => {
-  // ★ 決済処理を無効化
-  alert("デモモード: 決済機能は無効です。Pro機能は解放されています。");
-};
 
 window.openTokusho = () => {
   const dict = LANGUAGE_STRINGS[currentRegion];
