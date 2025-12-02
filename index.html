@@ -23,12 +23,12 @@
 
 <body>
 
-  <button id="btn-toggle-ui" onclick="toggleImmersiveMode()" aria-label="没入モード切替">👁️</button>
+  <button id="btn-toggle-ui" aria-label="没入モード切替">👁️</button>
 
   <div id="top-bar">
-    <button id="btn-help" onclick="openHelp()" aria-label="ヘルプ">?</button>
+    <button id="btn-help" aria-label="ヘルプ">?</button>
     <div class="top-right-group">
-      <button id="btn-lang" class="status-btn" onclick="toggleRegion()">🇯🇵 Japan</button>
+      <button id="btn-lang" class="status-btn">🇯🇵 Japan</button>
     </div>
   </div>
 
@@ -51,16 +51,16 @@
     </div>
 
     <div class="main-actions">
-      <button id="btn-grid-type" class="tool-btn" onclick="toggleGridType()" aria-label="グリッド切り替え">▦</button>
-      <button id="btn-grid-color" class="tool-btn" onclick="toggleGridColor()" aria-label="グリッド色変更">🎨</button>
-      <button id="btn-rotate" class="tool-btn" onclick="toggleOrientation()" aria-label="画面回転">🔄</button>
+      <button id="btn-grid-type" class="tool-btn" aria-label="グリッド切り替え">▦</button>
+      <button id="btn-grid-color" class="tool-btn" aria-label="グリッド色変更">🎨</button>
+      <button id="btn-rotate" class="tool-btn" aria-label="画面回転">🔄</button>
 
       <button id="btn-camera" class="size-btn-static" style="background: rgba(60,60,60,0.9);">📷 Camera</button>
       <button id="btn-import" class="size-btn-static" style="background: rgba(60,60,60,0.9);">📁 Import</button>
       <input type="file" id="file-input" accept="image/*" style="display: none;" aria-label="画像ファイルを選択">
     </div>
 
-    <button id="btn-open-size-panel" onclick="openSizePanel()" aria-label="サイズパネルを開く">
+    <button id="btn-open-size-panel" aria-label="サイズパネルを開く">
       <span id="current-size-label">サイズを選択</span>
     </button>
     
@@ -70,7 +70,7 @@
   <div id="size-panel">
     <div class="panel-header">
       <span id="text-size-header">キャンバスサイズ</span>
-      <button class="panel-close-btn" onclick="closeSizePanel()" aria-label="閉じる">×</button>
+      <button class="panel-close-btn" aria-label="閉じる">×</button>
     </div>
     <div class="size-grid" id="panel-grid-container"></div>
   </div>
@@ -86,7 +86,7 @@
           💾 画像を保存・共有
         </button>
       </div>
-      <button id="btn-close-save" class="btn-cancel" onclick="closeSaveModal()">閉じる</button>
+      <button id="btn-close-save" class="btn-cancel">閉じる</button>
     </div>
   </div>
 
@@ -94,7 +94,7 @@
     <div class="modal-box">
       <h3 id="text-help-title">使い方</h3>
       <div id="help-content-area" class="help-content"></div>
-      <button id="btn-close-help" class="btn-cancel" onclick="closeHelp()">閉じる</button>
+      <button id="btn-close-help" class="btn-cancel">閉じる</button>
     </div>
   </div>
 
@@ -108,7 +108,7 @@
         <div class="ob-arrow">⬇</div>
         <p>ツールバーで<br>グリッド・色を変更</p>
       </div>
-      <button class="ob-btn-start" onclick="closeOnboarding()">はじめる</button>
+      <button class="ob-btn-start">はじめる</button>
     </div>
   </div>
 
