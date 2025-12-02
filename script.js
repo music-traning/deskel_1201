@@ -475,6 +475,7 @@ function resetTransform() {
   updateTransform();
 }
 
+// === ★修正箇所: 保存ボタンのクリックイベント（歪み補正版） ===
 document.getElementById('shutter-btn').onclick = () => {
   if (navigator.vibrate) navigator.vibrate(50);
   const canvas = document.getElementById('photo-canvas');
@@ -489,49 +490,76 @@ document.getElementById('shutter-btn').onclick = () => {
 
   if (!naturalW || !naturalH) return;
 
+  // ラッパー（表示領域）の論理サイズ（ズーム考慮なし）
   const displayW = wrapperRect.width / state.zoom;
   const displayH = wrapperRect.height / state.zoom;
-  const scaleX = naturalW / displayW;
-  const scaleY = naturalH / displayH;
 
+  // 縦横独立ではなく、CSSのobject-fitに基づいた「均等スケール」と「オフセット」を計算する
+  let renderScale;
+  let offsetX = 0;
+  let offsetY = 0;
+
+  if (isUsingCamera) {
+    // カメラ (object-fit: cover) の場合: 縦横の比率の「大きい方」に合わせて拡大
+    renderScale = Math.max(displayW / naturalW, displayH / naturalH);
+  } else {
+    // インポート画像 (object-fit: contain) の場合: 縦横の比率の「小さい方」に合わせる
+    renderScale = Math.min(displayW / naturalW, displayH / naturalH);
+  }
+
+  // 実際に画面に描画されている映像のサイズ
+  const renderW = naturalW * renderScale;
+  const renderH = naturalH * renderScale;
+
+  // object-fitによるセンタリングのズレ（はみ出し分や余白）を計算
+  offsetX = (renderW - displayW) / 2;
+  offsetY = (renderH - displayH) / 2;
+
+  // 画面上のグリッド位置（ラッパー左上からの相対位置）
   const relX = (frameRect.left - wrapperRect.left) / state.zoom;
   const relY = (frameRect.top - wrapperRect.top) / state.zoom;
-  const relW = frameRect.width / state.zoom;
-  const relH = frameRect.height / state.zoom;
 
-  const sourceX = relX * scaleX;
-  const sourceY = relY * scaleY;
-  const sourceW = relW * scaleX;
-  const sourceH = relH * scaleY;
+  // グリッド位置を、元画像（naturalW/H）の座標系に変換
+  // （画面上の座標 + センタリングのズレ）÷ 描画スケール = 元画像の座標
+  const sourceX = (relX + offsetX) / renderScale;
+  const sourceY = (relY + offsetY) / renderScale;
+  const sourceW = (frameRect.width / state.zoom) / renderScale;
+  const sourceH = (frameRect.height / state.zoom) / renderScale;
 
+  // キャンバスサイズ設定
   canvas.width = sourceW;
   canvas.height = sourceH;
 
+  // 画像描画
   ctx.drawImage(sourceElem, sourceX, sourceY, sourceW, sourceH, 0, 0, sourceW, sourceH);
 
+  // グリッド描画設定
   ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--grid-color').trim();
-  ctx.lineWidth = sourceW * 0.005;
+  // 線の太さを画像サイズに合わせて調整 (0.3%)
+  ctx.lineWidth = Math.min(sourceW, sourceH) * 0.003;
 
-  if (state.gridType === 0) {
+  // グリッド線の描画ロジック
+  if (state.gridType === 0) { // 4x4
     for (let i = 1; i <= 3; i++) {
       const p = i * (sourceW / 4);
       ctx.beginPath(); ctx.moveTo(p, 0); ctx.lineTo(p, sourceH); ctx.stroke();
       const q = i * (sourceH / 4);
       ctx.beginPath(); ctx.moveTo(0, q); ctx.lineTo(sourceW, q); ctx.stroke();
     }
-  } else if (state.gridType === 1) {
+  } else if (state.gridType === 1) { // 3x3
     for (let i = 1; i <= 2; i++) {
       const p = i * (sourceW / 3);
       ctx.beginPath(); ctx.moveTo(p, 0); ctx.lineTo(p, sourceH); ctx.stroke();
       const q = i * (sourceH / 3);
       ctx.beginPath(); ctx.moveTo(0, q); ctx.lineTo(sourceW, q); ctx.stroke();
     }
-  } else {
+  } else { // Cross
     ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(sourceW, sourceH); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(sourceW, 0); ctx.lineTo(0, sourceH); ctx.stroke();
   }
   ctx.strokeRect(0, 0, sourceW, sourceH);
 
+  // 以下、保存モーダル表示処理
   const dataURL = canvas.toDataURL('image/png');
   document.getElementById('preview-img').src = dataURL;
 
@@ -603,19 +631,9 @@ function renderButtons() {
 
     let label = LANGUAGE_STRINGS[currentRegion][item.label_key] || item.id;
 
-    // isUserPremiumがtrueなので、ロックの判定は常にfalseになるが、isProがtrueの項目は念のため「🔒」を外す
-    // isUserPremium = true のため、全てのサイズが選択可能
-    // const isLocked = item.isPro && !isUserPremium; 
-    
-    // if (isLocked) { // ロックアウト処理を無効化
-    //   label = '🔒 ' + label;
-    //   btn.style.opacity = '0.7';
-    // }
-
     btn.innerText = label;
 
     btn.onclick = () => {
-      // ロックアウト処理を無効化しているため、すぐにサイズ変更へ進む
       document.querySelectorAll('.panel-size-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       isLandscape = false;
