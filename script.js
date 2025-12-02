@@ -1,31 +1,7 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-// ★変更: Popup方式に戻しました
-import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { inject } from 'https://esm.sh/@vercel/analytics';
 
-// === ★設定エリア（ここを書き換えてください） ===
-
-// 1. Firebaseの接続情報
-// 全機能開放デモモードのため、接続情報を無効化
-// const firebaseConfig = {
-//   apiKey: "",
-//   authDomain: "deskel-app.firebaseapp.com",
-//   projectId: "deskel-app",
-//   storageBucket: "deskel-app.firebasestorage.app",
-//   messagingSenderId: "1022422619356",
-//   appId: ""
-// };
-
-// 2. Stripeの支払いリンク
-const STRIPE_PAYMENT_URL = null; // ★ 決済機能を無効化
-
-// =============================================
-
-// アプリの初期化 (Firebase関連の行を無効化)
-// const app = initializeApp(firebaseConfig);
-// const auth = getAuth(app);
-// const db = getFirestore(app);
-// const provider = new GoogleAuthProvider();
+// アナリティクスを開始（本番環境でのみデータが送信されます）
+inject();
 
 // 言語データ
 const LANGUAGE_STRINGS = {
