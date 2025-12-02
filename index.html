@@ -10,14 +10,14 @@
   <link rel="icon" href="icon.png">
   <meta name="theme-color" content="#000000">
   <link rel="stylesheet" href="style.css">
-  </head>
+</head>
 
 <body>
 
-  <button id="btn-toggle-ui" onclick="toggleImmersiveMode()">👁️</button>
+  <button id="btn-toggle-ui" onclick="toggleImmersiveMode()" aria-label="没入モード切替">👁️</button>
 
   <div id="top-bar">
-    <button id="btn-help" onclick="openHelp()">?</button>
+    <button id="btn-help" onclick="openHelp()" aria-label="ヘルプ">?</button>
     <div class="top-right-group">
       <button id="btn-lang" class="status-btn" onclick="toggleRegion()">🇯🇵 Japan</button>
     </div>
@@ -26,7 +26,7 @@
   <div class="video-container" id="touch-area">
     <div id="transform-wrapper">
       <video id="camera-video" autoplay playsinline muted></video>
-      <img id="imported-image" style="display:none;" draggable="false">
+      <img id="imported-image" style="display:none;" draggable="false" alt="">
     </div>
   </div>
 
@@ -37,30 +37,31 @@
   <div class="ui-container" id="main-ui">
     <div class="zoom-control">
       <span>－</span>
-      <input type="range" id="zoom-slider" min="1.0" max="3.0" step="0.01" value="1.0">
+      <input type="range" id="zoom-slider" min="1.0" max="3.0" step="0.01" value="1.0" aria-label="ズーム倍率">
       <span>＋</span>
     </div>
 
     <div class="main-actions">
-      <button id="btn-grid-type" class="tool-btn" onclick="toggleGridType()">▦</button>
-      <button id="btn-grid-color" class="tool-btn" onclick="toggleGridColor()">🎨</button>
-      <button id="btn-rotate" class="tool-btn" onclick="toggleOrientation()">🔄</button>
+      <button id="btn-grid-type" class="tool-btn" onclick="toggleGridType()" aria-label="グリッド切り替え">▦</button>
+      <button id="btn-grid-color" class="tool-btn" onclick="toggleGridColor()" aria-label="グリッド色変更">🎨</button>
+      <button id="btn-rotate" class="tool-btn" onclick="toggleOrientation()" aria-label="画面回転">🔄</button>
 
       <button id="btn-camera" class="size-btn-static" style="background: rgba(60,60,60,0.9);">📷 Camera</button>
       <button id="btn-import" class="size-btn-static" style="background: rgba(60,60,60,0.9);">📁 Import</button>
-      <input type="file" id="file-input" accept="image/*" style="display: none;">
+      <input type="file" id="file-input" accept="image/*" style="display: none;" aria-label="画像ファイルを選択">
     </div>
 
-    <button id="btn-open-size-panel" onclick="openSizePanel()">
+    <button id="btn-open-size-panel" onclick="openSizePanel()" aria-label="サイズパネルを開く">
       <span id="current-size-label">サイズを選択</span>
     </button>
-    <button id="shutter-btn"></button>
+    
+    <button id="shutter-btn" aria-label="撮影"></button>
   </div>
 
   <div id="size-panel">
     <div class="panel-header">
       <span id="text-size-header">キャンバスサイズ</span>
-      <button class="panel-close-btn" onclick="closeSizePanel()">×</button>
+      <button class="panel-close-btn" onclick="closeSizePanel()" aria-label="閉じる">×</button>
     </div>
     <div class="size-grid" id="panel-grid-container"></div>
   </div>
@@ -68,7 +69,7 @@
   <div id="save-modal">
     <div class="modal-box">
       <h3 id="text-save-title">撮影しました</h3>
-      <img id="preview-img" src="">
+      <img id="preview-img" src="" alt="撮影された画像のプレビュー">
       <p id="text-save-desc" style="text-align:center; font-size:12px; color:#aaa; margin-bottom:15px;">
         保存方法を選んでください</p>
       <div style="display:flex; justify-content:center; flex-wrap:wrap;">
