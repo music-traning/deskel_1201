@@ -4,9 +4,9 @@ import { inject } from 'https://esm.sh/@vercel/analytics';
 inject();
 
 // 言語データ
+// 言語データ（OFUSE支援リンク追加版）
 const LANGUAGE_STRINGS = {
   'ja': {
-    'LOGIN_REQUIRED': '購入データの紐付けに必要なため、\n先にGoogleログインをお願いします。',
     'BTN_LABEL': '🇯🇵 Japan',
     'LOGIN': 'G ログイン',
     'IMPORT': '📁 読込',
@@ -30,7 +30,6 @@ const LANGUAGE_STRINGS = {
     'PREMIUM_DESC': `
       <div style="text-align:left; margin:0 auto; display:inline-block;">
       <b>プロフェッショナルのための機能</b><br>
-      
       </div><br><br>
       たった300円(税込)で、<br>あなたのデッサン環境を完成させましょう。
     `,
@@ -70,10 +69,22 @@ const LANGUAGE_STRINGS = {
         <strong>💡 ヒント:</strong><br>
         「📷 カメラ」は風景や静物のデッサンに。<br>
         「📁 読込」は写真模写の練習に便利です。
-      </div>`,
+      </div>
+
+      <div style="margin-top: 30px; padding-top: 15px; border-top: 1px solid #555; text-align: center;">
+        <h4 style="margin-bottom: 8px;">🎁 開発者を応援</h4>
+        <p style="font-size: 0.9em; line-height: 1.5; color: #ccc;">
+          本アプリはフリーウェアですが、開発・維持にはコストがかかります。<br>
+          もしよろしければご支援をお願いいたします。
+        </p>
+        <a href="https://ofuse.me/8bc9d230】" target="_blank" rel="noopener noreferrer" 
+           style="display: inline-block; margin-top: 10px; padding: 10px 20px; background-color: #444; color: #fff; text-decoration: none; border-radius: 4px; font-weight: bold; border:1px solid #666;">
+           buro を支援する (OFUSE)
+        </a>
+      </div>
+      `,
   },
   'us': {
-    'LOGIN_REQUIRED': 'Please sign in first\nto link your purchase.',
     'BTN_LABEL': '🇺🇸 USA',
     'LOGIN': 'Sign In',
     'IMPORT': 'Import',
@@ -132,23 +143,22 @@ const LANGUAGE_STRINGS = {
         <strong>💡 Tip:</strong><br>
         Use "📷 Camera" for life drawing.<br>
         Use "📁 Import" for photo reference study.
-      </div>`,
-    'LEGAL_DATA': {
-      'Distributor': 'U.M.A web',
-      'Representative': '[Enter Name]',
-      'Address': '[Enter Address]',
-      'Phone': '[Enter Phone Number]',
-      'Email': 'your-email@example.com',
-      'Selling Price': '$3.00 (Tax incl.)',
-      'Additional Fees': 'Internet connection charges are borne by the customer.',
-      'Payment Method': 'Credit Card (Stripe)',
-      'Payment Period': 'Processed immediately upon purchase.',
-      'Delivery Time': 'Access is granted immediately after payment.',
-      'Refund Policy': 'Due to the nature of digital content, all sales are final. No refunds or exchanges are accepted.'
-    }
+      </div>
+
+      <div style="margin-top: 30px; padding-top: 15px; border-top: 1px solid #555; text-align: center;">
+        <h4 style="margin-bottom: 8px;">🎁 Support Developer</h4>
+        <p style="font-size: 0.9em; line-height: 1.5; color: #ccc;">
+          This app is freeware, but development requires resources.<br>
+          Your support (donation) is greatly appreciated.
+        </p>
+        <a href="https://ofuse.me/8bc9d230】" target="_blank" rel="noopener noreferrer" 
+           style="display: inline-block; margin-top: 10px; padding: 10px 20px; background-color: #444; color: #fff; text-decoration: none; border-radius: 4px; font-weight: bold; border:1px solid #666;">
+           Support buro (OFUSE)
+        </a>
+      </div>
+      `,
   },
   'eu': {
-    'LOGIN_REQUIRED': 'Please sign in first\nto link your purchase.',
     'BTN_LABEL': '🇪🇺 Europe',
     'LOGIN': 'Sign In',
     'IMPORT': 'Import',
@@ -208,20 +218,19 @@ const LANGUAGE_STRINGS = {
         Use "📷 Camera" for life drawing.<br>
         Use "📁 Import" for photo reference study.
       </div>
+
+      <div style="margin-top: 30px; padding-top: 15px; border-top: 1px solid #555; text-align: center;">
+        <h4 style="margin-bottom: 8px;">🎁 Support Developer</h4>
+        <p style="font-size: 0.9em; line-height: 1.5; color: #ccc;">
+          This app is freeware, but development requires resources.<br>
+          Your support (donation) is greatly appreciated.
+        </p>
+        <a href="https://ofuse.me/8bc9d230】" target="_blank" rel="noopener noreferrer" 
+           style="display: inline-block; margin-top: 10px; padding: 10px 20px; background-color: #444; color: #fff; text-decoration: none; border-radius: 4px; font-weight: bold; border:1px solid #666;">
+           Support buro (OFUSE)
+        </a>
+      </div>
   `,
-    'LEGAL_DATA': {
-      'Distributor': 'U.M.A web',
-      'Representative': '[Enter Name]',
-      'Address': '[Enter Address]',
-      'Phone': '[Enter Phone Number]',
-      'Email': 'your-email@example.com',
-      'Selling Price': '€3.00 (Tax incl.)',
-      'Additional Fees': 'Internet connection charges are borne by the customer.',
-      'Payment Method': 'Credit Card (Stripe)',
-      'Payment Period': 'Processed immediately upon purchase.',
-      'Delivery Time': 'Access is granted immediately after payment.',
-      'Refund Policy': 'Digital content is not eligible for withdrawal rights once access has started.'
-    }
   }
 };
 
