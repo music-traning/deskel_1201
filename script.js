@@ -71,7 +71,14 @@ const LANGUAGE_STRINGS = {
            style="display: inline-block; margin-top: 10px; padding: 10px 20px; background-color: #444; color: #fff; text-decoration: none; border-radius: 4px; font-weight: bold; border:1px solid #666;">
            buro を支援する (OFUSE)
         </a>
-      </div>
+
+        <div style="margin-top: 25px; font-size: 0.85em; color: #888;">
+          お問い合わせ: <br>
+          <a href="mailto:deskel358@gmail.com" style="color: #aaa; text-decoration: underline;">
+            deskel358@gmail.com
+          </a>
+        </div>
+        </div>
       `,
   },
   'us': {
@@ -142,7 +149,14 @@ const LANGUAGE_STRINGS = {
            style="display: inline-block; margin-top: 10px; padding: 10px 20px; background-color: #444; color: #fff; text-decoration: none; border-radius: 4px; font-weight: bold; border:1px solid #666;">
            Support buro (OFUSE)
         </a>
-      </div>
+
+        <div style="margin-top: 25px; font-size: 0.85em; color: #888;">
+          Contact: <br>
+          <a href="mailto:deskel358@gmail.com" style="color: #aaa; text-decoration: underline;">
+            deskel358@gmail.com
+          </a>
+        </div>
+        </div>
       `,
   },
   'eu': {
@@ -213,7 +227,14 @@ const LANGUAGE_STRINGS = {
            style="display: inline-block; margin-top: 10px; padding: 10px 20px; background-color: #444; color: #fff; text-decoration: none; border-radius: 4px; font-weight: bold; border:1px solid #666;">
            Support buro (OFUSE)
         </a>
-      </div>
+
+        <div style="margin-top: 25px; font-size: 0.85em; color: #888;">
+          Contact: <br>
+          <a href="mailto:deskel358@gmail.com" style="color: #aaa; text-decoration: underline;">
+            deskel358@gmail.com
+          </a>
+        </div>
+        </div>
   `,
   }
 };
@@ -428,7 +449,7 @@ function resetTransform() {
   updateTransform();
 }
 
-// === ★修正箇所: 保存ボタンのクリックイベント（歪み補正版） ===
+// === 保存ボタンのクリックイベント（歪み補正版） ===
 document.getElementById('shutter-btn').onclick = () => {
   if (navigator.vibrate) navigator.vibrate(50);
   const canvas = document.getElementById('photo-canvas');
