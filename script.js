@@ -5,6 +5,7 @@ inject();
 
 // 言語データ
 // 言語データ（OFUSE支援リンク追加版）
+// 言語データ（OFUSE支援リンク追加版 + カメラ歪み注意書き追加）
 const LANGUAGE_STRINGS = {
   'ja': {
     'BTN_LABEL': '🇯🇵 Japan',
@@ -68,7 +69,8 @@ const LANGUAGE_STRINGS = {
       <div style="background:#333; padding:10px; border-radius:8px; margin-top:10px;">
         <strong>💡 ヒント:</strong><br>
         「📷 カメラ」は風景や静物のデッサンに。<br>
-        「📁 読込」は写真模写の練習に便利です。
+        「📁 読込」は写真模写の練習に便利です。<br><br>
+        <span style="font-size: 0.9em; color: #ddd;">※カメラは人間の目より広角です。画面を信じすぎず、最後は自分の肉眼で形のゆがみを修正してください。</span>
       </div>
 
       <div style="margin-top: 30px; padding-top: 15px; border-top: 1px solid #555; text-align: center;">
@@ -77,7 +79,7 @@ const LANGUAGE_STRINGS = {
           本アプリはフリーウェアですが、開発・維持にはコストがかかります。<br>
           もしよろしければご支援をお願いいたします。
         </p>
-        <a href="https://ofuse.me/8bc9d230】" target="_blank" rel="noopener noreferrer" 
+        <a href="https://ofuse.me/8bc9d230" target="_blank" rel="noopener noreferrer" 
            style="display: inline-block; margin-top: 10px; padding: 10px 20px; background-color: #444; color: #fff; text-decoration: none; border-radius: 4px; font-weight: bold; border:1px solid #666;">
            buro を支援する (OFUSE)
         </a>
@@ -142,7 +144,8 @@ const LANGUAGE_STRINGS = {
       <div style="background:#333; padding:10px; border-radius:8px; margin-top:10px;">
         <strong>💡 Tip:</strong><br>
         Use "📷 Camera" for life drawing.<br>
-        Use "📁 Import" for photo reference study.
+        Use "📁 Import" for photo reference study.<br><br>
+        <span style="font-size: 0.9em; color: #ddd;">*Note: The camera lens is wider than the human eye. Do not rely solely on the screen; please correct perspective distortions with your own eyes.</span>
       </div>
 
       <div style="margin-top: 30px; padding-top: 15px; border-top: 1px solid #555; text-align: center;">
@@ -151,7 +154,7 @@ const LANGUAGE_STRINGS = {
           This app is freeware, but development requires resources.<br>
           Your support (donation) is greatly appreciated.
         </p>
-        <a href="https://ofuse.me/8bc9d230】" target="_blank" rel="noopener noreferrer" 
+        <a href="https://ofuse.me/8bc9d230" target="_blank" rel="noopener noreferrer" 
            style="display: inline-block; margin-top: 10px; padding: 10px 20px; background-color: #444; color: #fff; text-decoration: none; border-radius: 4px; font-weight: bold; border:1px solid #666;">
            Support buro (OFUSE)
         </a>
@@ -216,7 +219,8 @@ const LANGUAGE_STRINGS = {
       <div style="background:#333; padding:10px; border-radius:8px; margin-top:10px;">
         <strong>💡 Tip:</strong><br>
         Use "📷 Camera" for life drawing.<br>
-        Use "📁 Import" for photo reference study.
+        Use "📁 Import" for photo reference study.<br><br>
+        <span style="font-size: 0.9em; color: #ddd;">*Note: The camera lens is wider than the human eye. Do not rely solely on the screen; please correct perspective distortions with your own eyes.</span>
       </div>
 
       <div style="margin-top: 30px; padding-top: 15px; border-top: 1px solid #555; text-align: center;">
@@ -225,7 +229,7 @@ const LANGUAGE_STRINGS = {
           This app is freeware, but development requires resources.<br>
           Your support (donation) is greatly appreciated.
         </p>
-        <a href="https://ofuse.me/8bc9d230】" target="_blank" rel="noopener noreferrer" 
+        <a href="https://ofuse.me/8bc9d230" target="_blank" rel="noopener noreferrer" 
            style="display: inline-block; margin-top: 10px; padding: 10px 20px; background-color: #444; color: #fff; text-decoration: none; border-radius: 4px; font-weight: bold; border:1px solid #666;">
            Support buro (OFUSE)
         </a>
