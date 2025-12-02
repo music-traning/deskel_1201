@@ -357,6 +357,8 @@ function updateShape(baseRatio) {
   const topOffset = 60 + (safeHeight - h) / 2;
   document.getElementById('overlay-layer').style.top = topOffset + 'px';
   document.getElementById('overlay-layer').style.height = safeHeight + 'px';
+
+  frame.style.opacity = '1';
 }
 
 function updateTransform() {
