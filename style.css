@@ -35,8 +35,11 @@ body, html {
   border: 3px solid var(--grid-color);
   box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
   width: 100px; height: 100px; position: relative; box-sizing: border-box;
-  transition: width 0.4s var(--ease-bounce), height 0.4s var(--ease-bounce);
   opacity: 0;
+}
+#guide-frame.loaded {
+  opacity: 1; /* 不透明にする */
+  transition: width 0.4s var(--ease-bounce), height 0.4s var(--ease-bounce); /* ここでアニメーション復活 */
 }
 
 /* グリッドパターン */

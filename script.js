@@ -307,7 +307,7 @@ window.toggleGridType = () => {
 };
 
 function updateGridDisplay() {
-  frame.className = '';
+  GRID_TYPES.forEach(type => frame.classList.remove(type));
   frame.classList.add(GRID_TYPES[state.gridType]);
   frame.innerHTML = '';
 
@@ -670,3 +670,7 @@ updateGridDisplay();
 updateUITexts();
 renderButtons();
 window.addEventListener('resize', () => updateShape(currentBaseRatio));
+
+setTimeout(() => {
+  frame.classList.add('loaded');
+}, 100);
