@@ -567,23 +567,6 @@ window.closeHelp = () => document.getElementById('help-modal').style.display = '
 window.closeModal = () => document.getElementById('modal').style.display = 'none';
 window.closeSaveModal = () => document.getElementById('save-modal').style.display = 'none';
 
-window.openTokusho = () => {
-  const dict = LANGUAGE_STRINGS[currentRegion];
-  document.getElementById('text-tokusho-title').innerText = dict['TOKUSHO_TITLE'];
-
-  const table = document.getElementById('tokusho-table');
-  table.innerHTML = '';
-
-  for (const [key, val] of Object.entries(dict['LEGAL_DATA'])) {
-    const row = document.createElement('tr');
-    row.innerHTML = `<th>${key}</th><td>${val}</td>`;
-    table.appendChild(row);
-  }
-
-  document.getElementById('tokusho-modal').style.display = 'flex';
-};
-window.closeTokusho = () => { document.getElementById('tokusho-modal').style.display = 'none'; };
-
 function renderButtons() {
   const panelGrid = document.getElementById('panel-grid-container');
   panelGrid.innerHTML = '';
@@ -685,6 +668,3 @@ updateGridDisplay();
 updateUITexts();
 renderButtons();
 window.addEventListener('resize', () => updateShape(currentBaseRatio));
-// ★ ログイン/ユーザーアイコンを非表示に固定
-if (document.getElementById('btn-login')) document.getElementById('btn-login').style.display = 'none';
-if (document.getElementById('user-icon')) document.getElementById('user-icon').style.display = 'none';
