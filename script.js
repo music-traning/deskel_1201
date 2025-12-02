@@ -208,12 +208,7 @@ const LANGUAGE_STRINGS = {
         Use "📷 Camera" for life drawing.<br>
         Use "📁 Import" for photo reference study.
       </div>
-
-      <div style="background:rgba(255,0,0,0.15); border:1px solid #ff5555; padding:10px; border-radius:8px; margin-top:15px;">
-        <strong style="color:#ff8888;">⚠️ Important: Before You Buy</strong><br>
-        Due to the nature of digital content, <strong>all sales are final</strong>. By purchasing, you acknowledge that you lose your right of withdrawal once access starts.<br>
-        Please fully test this demo version to ensure compatibility before upgrading.
-      </div>`,
+  `,
     'LEGAL_DATA': {
       'Distributor': 'U.M.A web',
       'Representative': '[Enter Name]',
