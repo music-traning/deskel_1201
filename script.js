@@ -62,8 +62,8 @@ const LANGUAGE_STRINGS = {
     'LABEL_SIZE_DEFAULT': 'サイズ',
     'ACTION_LOAD_IMAGE': '画像を読み込む / Load Image',
     'SAVE_TITLE': '撮影しました',
-    'SAVE_DESC': '保存後、共有メニューから「画像を保存」や「フォト」を選択してください。',
-    'SAVE_BTN_MAIN': '💾 画像を保存・共有',
+    'SAVE_DESC': '保存方法、iOS→「その他」を選択→「画像を保存」を選択するとカメラロールに保存されます。\nAndroidは、撮影画像は「ファイル」に保存されます。',
+    'SAVE_BTN_MAIN': '💾 画像を保存',
     'HELP_TITLE': '使い方ガイド',
     'HELP_CONTENT': `
       <h4>📱 推奨：アプリとして使う</h4>
@@ -142,8 +142,8 @@ const LANGUAGE_STRINGS = {
     'LABEL_SIZE_DEFAULT': 'Size',
     'ACTION_LOAD_IMAGE': 'Load Image',
     'SAVE_TITLE': 'Captured',
-    'SAVE_DESC': 'Select "Save Image" or "Photos" from the share menu.',
-    'SAVE_BTN_MAIN': '💾 Save / Share',
+    'SAVE_DESC': 'How to save: iOS -> Select "More" -> "Save Image" to save to Camera Roll.\nAndroid: Image is saved to "Files".',
+    'SAVE_BTN_MAIN': '💾 Save',
     'HELP_TITLE': 'User Guide',
     'HELP_CONTENT': `
       <h4>📱 Install App</h4>
@@ -222,8 +222,8 @@ const LANGUAGE_STRINGS = {
     'LABEL_SIZE_DEFAULT': 'Size',
     'ACTION_LOAD_IMAGE': 'Load Image',
     'SAVE_TITLE': 'Captured',
-    'SAVE_DESC': 'Select "Save Image" or "Photos" from the share menu.',
-    'SAVE_BTN_MAIN': '💾 Save / Share',
+    'SAVE_DESC': 'How to save: iOS -> Select "More" -> "Save Image" to save to Camera Roll.\nAndroid: Image is saved to "Files".',
+    'SAVE_BTN_MAIN': '💾 Save',
     'HELP_TITLE': 'User Guide',
     'HELP_CONTENT': `
       <h4>📱 Install App</h4>
