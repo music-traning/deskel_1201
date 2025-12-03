@@ -803,38 +803,45 @@ class DeskelApp {
 
     // ここから btnSave.onclick の定義を修正します
     btnSave.onclick = async () => {
-      this.log("ダウンロード処理を強制実行します...");
+      this.log("保存処理を開始します...");
 
-      // 1. Canvasから直接Blobを取得 (CSP問題を回避し、オフライン対応)
-      const blob = await new Promise(resolve => {
-        canvas.toBlob(resolve, 'image/png');
-      });
-      
-      if (!blob) {
-        this.log("CanvasからBlobの生成に失敗しました。", "ERROR");
-        alert("画像の保存に失敗しました。");
-        return;
-      }
+      // 1. CanvasからBlobを作る
+      const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+      if (!blob) return alert("保存に失敗しました");
 
-      // 2. ダウンロード処理を実行
-      try {
+      // 2. iOSかどうかを判定する
+      // （iPadやiPhoneかどうかをチェックしています）
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+                    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+      // 3. 画像ファイルオブジェクトを作る
+      const file = new File([blob], `deskel_${Date.now()}.png`, { type: 'image/png' });
+
+      // ★分岐処理★
+      // iPhone/iPad かつ、共有機能が使える場合 → 「共有メニュー」を開く
+      if (isIOS && navigator.canShare && navigator.canShare({ files: [file] })) {
+        try {
+          await navigator.share({
+            files: [file],
+            // タイトルなどはiOSでは表示されないことが多いですが念のため
+          });
+          this.log("iOS共有メニューを開きました");
+        } catch (err) {
+          // ユーザーが×ボタンで閉じた場合など
+          this.log("共有がキャンセルされました");
+        }
+      } 
+      // AndroidやPCの場合 → これまで通り「直接ダウンロード」
+      else {
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a'); 
         a.href = url; 
-        // ダウンロードファイル名を設定
         a.download = `deskel_${Date.now()}.png`; 
-
         document.body.appendChild(a); 
-        a.click(); // ダウンロードをトリガー
+        a.click(); 
         document.body.removeChild(a); 
         URL.revokeObjectURL(url);
-
-        this.log("画像をダウンロードしました。");
-        if (navigator.vibrate) navigator.vibrate(50);
-
-      } catch (err) {
-        this.log(`ダウンロード失敗: ${err.message}`, "ERROR");
-        alert("画像のダウンロードに失敗しました。プレビュー画像を長押しして保存をお試しください。");
+        this.log("画像をダウンロード保存しました");
       }
     };
     

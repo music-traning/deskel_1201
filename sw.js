@@ -1,6 +1,6 @@
 // sw.js
 // ★修正1: バージョン名を必ず変える（v3 -> v4）
-const CACHE_NAME = 'deskel-v4';
+const CACHE_NAME = 'deskel-v5';
 
 const ASSETS_TO_CACHE = [
   './',
