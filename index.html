@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="description" content="デッサン用スケール（デスケル）アプリ。スマホのカメラで構図を確認、グリッド表示、明度変更ができます。美大受験や絵画制作に最適。完全無料・登録不要ですぐ使えます。">
-  
+
   <meta property="og:title" content="Deskel Pro - デッサン用構図確認アプリ">
   <meta property="og:description" content="スマホをかざすだけでデスケルに。グリッド表示・明度変更・回転機能付き。美大受験や絵画の構図決めに。">
   <meta property="og:type" content="website">
@@ -19,6 +19,18 @@
   <meta name="theme-color" content="#000000">
   <link rel="preconnect" href="https://esm.sh">
   <link rel="stylesheet" href="style.css">
+
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self'; 
+    script-src 'self' https://esm.sh; 
+    connect-src 'self' https://vitals.vercel-analytics.com;
+    img-src 'self' data: https://deskel-1201.vercel.app;
+    media-src 'self';
+    style-src 'self' 'unsafe-inline';
+    font-src 'self';
+    object-src 'none';
+    base-uri 'self';
+  ">
 </head>
 
 <body>
@@ -63,7 +75,7 @@
     <button id="btn-open-size-panel" aria-label="サイズパネルを開く">
       <span id="current-size-label">サイズを選択</span>
     </button>
-    
+
     <button id="shutter-btn" aria-label="撮影"></button>
   </div>
 
@@ -82,7 +94,8 @@
       <p id="text-save-desc" style="text-align:center; font-size:12px; color:#aaa; margin-bottom:15px;">
         保存方法を選んでください</p>
       <div style="display:flex; justify-content:center; flex-wrap:wrap;">
-        <button id="btn-main-save" class="btn-download" style="background:#00d2ff; color:black; width:100%; padding:15px;">
+        <button id="btn-main-save" class="btn-download"
+          style="background:#00d2ff; color:black; width:100%; padding:15px;">
           💾 画像を保存・共有
         </button>
       </div>
@@ -129,4 +142,5 @@
     }
   </script>
 </body>
+
 </html>
