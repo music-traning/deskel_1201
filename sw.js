@@ -39,6 +39,11 @@ self.addEventListener('activate', (event) => {
 
 // 3. 通信時：キャッシュがあればそれを返す、なければネットに取りに行く
 self.addEventListener('fetch', (event) => {
+  // --- ★ 修正箇所: blob: スキームのリクエストは Service Worker の対象外とする ---
+  if (event.request.url.startsWith('blob:')) {
+    return; // blob URL は無視してブラウザのデフォルト処理に任せる
+  }
+  
   event.respondWith(
     caches.match(event.request).then((response) => {
       // キャッシュに見つかればそれを返す（高速・オフライン対応）
