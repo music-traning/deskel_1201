@@ -107,7 +107,7 @@ const LANGUAGE_STRINGS = {
           <a href="mailto:deskel358@gmail.com" style="color: #aaa; text-decoration: underline;">
             deskel358@gmail.com
           </a><br>
-          © 2025 Universal Make Associate
+          <p>© 2025 Universal Make Associate</p>
         </div>
       </div>
     `,
@@ -188,7 +188,7 @@ const LANGUAGE_STRINGS = {
           <a href="mailto:deskel358@gmail.com" style="color: #aaa; text-decoration: underline;">
             deskel358@gmail.com
           </a><br>
-          © 2025 Universal Make Associate
+          <p>© 2025 Universal Make Associate</p>
         </div>
       </div>
     `,
@@ -269,7 +269,7 @@ const LANGUAGE_STRINGS = {
           <a href="mailto:deskel358@gmail.com" style="color: #aaa; text-decoration: underline;">
             deskel358@gmail.com
           </a><br>
-          © 2025 Universal Make Associate
+         <p>© 2025 Universal Make Associate</p>
         </div>
       </div>
     `,
