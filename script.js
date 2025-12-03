@@ -106,7 +106,8 @@ const LANGUAGE_STRINGS = {
           お問い合わせ: <br>
           <a href="mailto:deskel358@gmail.com" style="color: #aaa; text-decoration: underline;">
             deskel358@gmail.com
-          </a>
+          </a><br>
+          <footer>© 2025 Universal Make Associate</footer>
         </div>
       </div>
     `,
@@ -186,7 +187,8 @@ const LANGUAGE_STRINGS = {
           Contact: <br>
           <a href="mailto:deskel358@gmail.com" style="color: #aaa; text-decoration: underline;">
             deskel358@gmail.com
-          </a>
+          </a><br>
+          <footer>© 2025 Universal Make Associate</footer>
         </div>
       </div>
     `,
@@ -266,7 +268,8 @@ const LANGUAGE_STRINGS = {
           Contact: <br>
           <a href="mailto:deskel358@gmail.com" style="color: #aaa; text-decoration: underline;">
             deskel358@gmail.com
-          </a>
+          </a><br>
+          <footer>© 2025 Universal Make Associate</footer>
         </div>
       </div>
     `,
