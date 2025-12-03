@@ -62,7 +62,7 @@ const LANGUAGE_STRINGS = {
     'LABEL_SIZE_DEFAULT': 'サイズ',
     'ACTION_LOAD_IMAGE': '画像を読み込む / Load Image',
     'SAVE_TITLE': '撮影しました',
-    'SAVE_DESC': '保存方法\niOS→「その他」を選択→「画像を保存」を選択するとカメラロールに保存されます。\nAndroidは、撮影画像は「マイファイル」→「Download」に保存されます。',
+    'SAVE_DESC': '保存方法\niOS:「画像を保存」を選択するとカメラロールに保存されます。\nAndroid:撮影画像は「マイファイル」→「Download」に保存されます。',
     'SAVE_BTN_MAIN': '💾 画像を保存',
     'HELP_TITLE': '使い方ガイド',
     'HELP_CONTENT': `
@@ -143,7 +143,7 @@ const LANGUAGE_STRINGS = {
     'LABEL_SIZE_DEFAULT': 'Size',
     'ACTION_LOAD_IMAGE': 'Load Image',
     'SAVE_TITLE': 'Captured',
-    'SAVE_DESC': 'How to save\niOS -> Select "More" -> "Save Image" to save to Camera Roll.\nAndroid: Image is saved in "My Files" -> "Download".',
+    'SAVE_DESC': 'How to save\niOS: Select "Save Image" to save to Camera Roll.\nAndroid: Images are saved in "My Files" -> "Download".',
     'SAVE_BTN_MAIN': '💾 Save',
     'HELP_TITLE': 'User Guide',
     'HELP_CONTENT': `
@@ -224,7 +224,7 @@ const LANGUAGE_STRINGS = {
     'LABEL_SIZE_DEFAULT': 'Size',
     'ACTION_LOAD_IMAGE': 'Load Image',
     'SAVE_TITLE': 'Captured',
-    'SAVE_DESC': 'How to save\niOS -> Select "More" -> "Save Image" to save to Camera Roll.\nAndroid: Image is saved in "My Files" -> "Download".',
+    'SAVE_DESC': 'How to save\niOS: Select "Save Image" to save to Camera Roll.\nAndroid: Images are saved in "My Files" -> "Download".',
     'SAVE_BTN_MAIN': '💾 Save',
     'HELP_TITLE': 'User Guide',
     'HELP_CONTENT': `
