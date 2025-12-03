@@ -796,13 +796,14 @@ class DeskelApp {
 
     // イベントリスナーの重複登録を防ぐため、新しい要素に置換するか、onclickプロパティを使用する
     // ここではシンプルにonclickプロパティを上書きする
-    btnSave.onclick = async () => {
-      
-      let sharedSuccessfully = false;
+    // ... (中略)
 
-      // Canvasから直接Blobを取得するPromiseを作成
+    // ここから btnSave.onclick の定義を修正します
+    btnSave.onclick = async () => {
+      this.log("ダウンロード処理を強制実行します...");
+
+      // 1. Canvasから直接Blobを取得 (CSP問題を回避し、オフライン対応)
       const blob = await new Promise(resolve => {
-        // toBlobメソッドはCSP違反を回避し、効率的
         canvas.toBlob(resolve, 'image/png');
       });
       
@@ -812,35 +813,25 @@ class DeskelApp {
         return;
       }
 
-      const file = new File([blob], "deskel_art.png", { type: "image/png" });
+      // 2. ダウンロード処理を実行
+      try {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a'); 
+        a.href = url; 
+        // ダウンロードファイル名を設定
+        a.download = `deskel_${Date.now()}.png`; 
 
-      // 1. Web Share APIで共有を試みる
-      if (navigator.share && navigator.canShare({ files: [file] })) {
-        try {
-          // iOSでの問題を避けるため、filesのみを渡す（title/textは省略）
-          await navigator.share({ files: [file] }); 
-          sharedSuccessfully = true;
-          this.log("Web Share APIで画像を共有しました");
-        } catch (err) {
-          // 共有がユーザーによってキャンセルされたり、エラーが発生した場合
-          this.log(`Web Share APIでの共有失敗: ${err.message}`, "WARN");
-          // 共有が失敗した場合、フォールバックのダウンロードを試みる
-        }
-      }
+        document.body.appendChild(a); 
+        a.click(); // ダウンロードをトリガー
+        document.body.removeChild(a); 
+        URL.revokeObjectURL(url);
 
-      // 2. Web Share APIが使えない、または失敗した場合は、ダウンロード処理をフォールバックとして実行
-      if (!sharedSuccessfully) {
-        try {
-          // ダウンロードリンクを作成してクリックする処理
-          const url = URL.createObjectURL(blob);
-          const a = document.createElement('a'); a.href = url; a.download = `deskel_${Date.now()}.png`;
-          document.body.appendChild(a); a.click(); document.body.removeChild(a); 
-          URL.revokeObjectURL(url);
-          this.log("画像をダウンロードしました (フォールバック)");
-        } catch (err) {
-          this.log(`ダウンロードフォールバックも失敗: ${err.message}`, "ERROR");
-          alert("画像の保存に失敗しました。お手数ですが、プレビュー画像を長押しして保存をお試しください。");
-        }
+        this.log("画像をダウンロードしました。");
+        if (navigator.vibrate) navigator.vibrate(50);
+
+      } catch (err) {
+        this.log(`ダウンロード失敗: ${err.message}`, "ERROR");
+        alert("画像のダウンロードに失敗しました。プレビュー画像を長押しして保存をお試しください。");
       }
     };
     
