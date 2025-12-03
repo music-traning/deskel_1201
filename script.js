@@ -797,22 +797,53 @@ class DeskelApp {
     // イベントリスナーの重複登録を防ぐため、新しい要素に置換するか、onclickプロパティを使用する
     // ここではシンプルにonclickプロパティを上書きする
     btnSave.onclick = async () => {
-      try {
-        const blob = await (await fetch(dataURL)).blob();
-        const file = new File([blob], "deskel_art.png", { type: "image/png" });
-        if (navigator.share && navigator.canShare({ files: [file] })) {
-          await navigator.share({ files: [file], title: 'Deskel', text: 'Created with Deskel App' });
-        } else {
+      
+      let sharedSuccessfully = false;
+
+      // Canvasから直接Blobを取得するPromiseを作成
+      const blob = await new Promise(resolve => {
+        // toBlobメソッドはCSP違反を回避し、効率的
+        canvas.toBlob(resolve, 'image/png');
+      });
+      
+      if (!blob) {
+        this.log("CanvasからBlobの生成に失敗しました。", "ERROR");
+        alert("画像の保存に失敗しました。");
+        return;
+      }
+
+      const file = new File([blob], "deskel_art.png", { type: "image/png" });
+
+      // 1. Web Share APIで共有を試みる
+      if (navigator.share && navigator.canShare({ files: [file] })) {
+        try {
+          // iOSでの問題を避けるため、filesのみを渡す（title/textは省略）
+          await navigator.share({ files: [file] }); 
+          sharedSuccessfully = true;
+          this.log("Web Share APIで画像を共有しました");
+        } catch (err) {
+          // 共有がユーザーによってキャンセルされたり、エラーが発生した場合
+          this.log(`Web Share APIでの共有失敗: ${err.message}`, "WARN");
+          // 共有が失敗した場合、フォールバックのダウンロードを試みる
+        }
+      }
+
+      // 2. Web Share APIが使えない、または失敗した場合は、ダウンロード処理をフォールバックとして実行
+      if (!sharedSuccessfully) {
+        try {
+          // ダウンロードリンクを作成してクリックする処理
           const url = URL.createObjectURL(blob);
           const a = document.createElement('a'); a.href = url; a.download = `deskel_${Date.now()}.png`;
-          document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+          document.body.appendChild(a); a.click(); document.body.removeChild(a); 
+          URL.revokeObjectURL(url);
+          this.log("画像をダウンロードしました (フォールバック)");
+        } catch (err) {
+          this.log(`ダウンロードフォールバックも失敗: ${err.message}`, "ERROR");
+          alert("画像の保存に失敗しました。お手数ですが、プレビュー画像を長押しして保存をお試しください。");
         }
-        this.log("画像を共有/保存しました");
-      } catch (err) {
-        this.log(`保存エラー: ${err.message}`, "ERROR");
       }
     };
-
+    
     this.dom['save-modal'].style.display = 'flex';
     this.log("保存モーダルを表示");
   }

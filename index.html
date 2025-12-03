@@ -20,10 +20,10 @@
   <link rel="preconnect" href="https://esm.sh">
   <link rel="stylesheet" href="style.css">
 
-  <meta http-equiv="Content-Security-Policy" content="
+<meta http-equiv="Content-Security-Policy" content="
     default-src 'self'; 
     script-src 'self' https://esm.sh; 
-    connect-src 'self' https://vitals.vercel-analytics.com https://esm.sh; 
+    connect-src 'self' https://vitals.vercel-analytics.com https://esm.sh data:; 
     img-src 'self' data: https://deskel-1201.vercel.app;
     media-src 'self';
     style-src 'self' 'unsafe-inline';
@@ -31,7 +31,6 @@
     object-src 'none';
     base-uri 'self';
   ">
-</head>
 
 <body>
 
